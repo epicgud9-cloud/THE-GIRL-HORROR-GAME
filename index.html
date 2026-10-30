@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="A little conversation that remembers what you say.">
+  <title>The Girl</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="background-grain" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="site-header">
+      <span class="brand-mark">TG</span>
+      <span class="brand-name">THE GIRL</span>
+      <span class="header-note">A little conversation</span>
+    </header>
+
+    <section id="welcomeScreen" class="screen welcome-screen">
+      <p class="eyebrow">A SMALL WEBSITE · A SIMPLE CONVERSATION</p>
+      <h1>Would you like<br><em>to talk?</em></h1>
+      <p class="intro-copy">I have a few questions for you.<br>That's all.</p>
+
+      <div class="privacy-panel">
+        <h2>Before we begin</h2>
+        <p><strong>Microphone:</strong> Chrome's speech recognition may send audio to its recognition service to turn your words into text. This prototype saves recognized text in this browser only; it does not record or store audio.</p>
+        <p><strong>Camera:</strong> Completely optional. It is requested only for the final scene if you enable it below. The camera image is compared locally for movement; no photo or video is saved or uploaded.</p>
+        <label class="consent-row" for="cameraConsent">
+          <input id="cameraConsent" type="checkbox">
+          <span>I'd like to enable the optional camera ending.</span>
+        </label>
+        <div class="camera-actions">
+          <button id="checkCameraButton" class="button button-quiet" type="button">Check camera permission</button>
+          <span id="cameraStatus" class="small-status" role="status" aria-live="polite">Camera is off unless you choose to enable it.</span>
+        </div>
+      </div>
+
+      <div class="start-actions">
+        <button id="startButton" class="button button-primary" type="button">Start conversation</button>
+        <button id="resetButton" class="button button-text" type="button" hidden>Forget this conversation and start over</button>
+      </div>
+      <p class="footnote">You can answer by microphone or type instead. You can leave and come back before the questions are finished.</p>
+    </section>
+
+    <section id="gameScreen" class="screen game-screen" hidden>
+      <div class="progress-row">
+        <span class="eyebrow">THE CONVERSATION</span>
+        <span id="progressText" class="progress-text">Question 1 of 30</span>
+      </div>
+      <div class="progress-track" aria-hidden="true"><div id="progressFill" class="progress-fill"></div></div>
+
+      <div class="game-layout">
+        <div class="portrait-column">
+          <div class="portrait-stage">
+            <div id="portrait" class="girl-portrait" aria-label="A shadowy illustrated portrait of a girl" role="img">
+              <div class="hair-back"></div>
+              <div class="neck"></div>
+              <div class="face-shape">
+                <div class="fringe"></div>
+                <div class="brow brow-left"></div>
+                <div class="brow brow-right"></div>
+                <div class="eyes"><i></i><i></i></div>
+                <div class="nose"></div>
+                <div class="mouth"></div>
+              </div>
+              <div class="hair-side hair-side-left"></div>
+              <div class="hair-side hair-side-right"></div>
+            </div>
+          </div>
+          <p class="portrait-caption">SHE IS LISTENING</p>
+        </div>
+
+        <div class="conversation-panel">
+          <p class="speaker-label">THE GIRL</p>
+          <p id="questionText" class="question-text">What's your favourite colour?</p>
+          <p id="replyText" class="reply-text" hidden></p>
+          <p id="statusText" class="status-text" role="status" aria-live="polite">Press the microphone button when you're ready.</p>
+
+          <div class="answer-actions">
+            <button id="listenButton" class="button button-primary" type="button">
+              <span class="mic-dot" aria-hidden="true"></span> Answer with microphone
+            </button>
+            <div class="typed-answer-row">
+              <label class="visually-hidden" for="typedAnswer">Type your answer</label>
+              <input id="typedAnswer" type="text" maxlength="240" placeholder="Or type your answer…" autocomplete="off">
+              <button id="sendButton" class="button button-quiet" type="button">Send</button>
+            </div>
+            <button id="repeatButton" class="button button-text" type="button">Hear the question again</button>
+          </div>
+          <p class="conversation-note">Your answers are kept in this browser until the conversation is completed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="endingScreen" class="ending-screen" hidden aria-live="polite">
+      <p id="endingText" class="ending-text"></p>
+    </section>
+
+    <section id="jumpScreen" class="jump-screen" hidden aria-live="assertive">
+      <div id="jumpPortrait" class="girl-portrait jump-portrait" aria-hidden="true">
+        <div class="hair-back"></div>
+        <div class="neck"></div>
+        <div class="face-shape">
+          <div class="fringe"></div>
+          <div class="brow brow-left"></div>
+          <div class="brow brow-right"></div>
+          <div class="eyes"><i></i><i></i></div>
+          <div class="nose"></div>
+          <div class="mouth"></div>
+        </div>
+        <div class="hair-side hair-side-left"></div>
+        <div class="hair-side hair-side-right"></div>
+      </div>
+      <p class="jump-caption">YOU FINISHED.</p>
+      <button id="backToStartButton" class="button button-quiet" type="button" hidden>Back to the beginning</button>
+    </section>
+
+    <footer class="site-footer">
+      <span>THE GIRL</span>
+      <span>Prototype · No account required</span>
+    </footer>
+  </main>
+</body>
+</html>
